@@ -19,10 +19,16 @@ def generate_board(terrain, cities, towns, forests, rocks, castles):
     width = len(terrain)
     height = len(terrain[0])
     castle_not_placed = True
-    terrain_elements = ['c', 't', 'f', 'r']
-    terrain_dict = {'c': cities, 't': towns, 'f': forests, 'r': rocks, 'X': castles}
+    castle = '!'
+    city = 'o'
+    town = '*'
+    forest = '&'
+    rock = '^'
 
-    while terrain_dict['c'] > 0 or terrain_dict['t'] > 0 or terrain_dict['f'] > 0 or terrain_dict['r'] > 0:
+    terrain_elements = [city, town, forest, rock]
+    terrain_dict = {city: cities, town: towns, forest: forests, rock: rocks, castle: castles}
+
+    while terrain_dict[city] > 0 or terrain_dict[town] > 0 or terrain_dict[forest] > 0 or terrain_dict[rock] > 0:
         random_x = random.randrange(width)
         random_y = random.randrange(height)
         tile = terrain_elements[random.randrange(len(terrain_elements))]
@@ -34,7 +40,7 @@ def generate_board(terrain, cities, towns, forests, rocks, castles):
         random_x = random.randrange(width)
         random_y = random.randrange(height)
         if terrain[random_x][random_y] == '.':
-            terrain[random_x][random_y] = 'X'
+            terrain[random_x][random_y] = castle
             castles -= 1
 
         if castles == 0:
