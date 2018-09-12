@@ -53,14 +53,20 @@ def print_map(game_map):
     print(build_map)
 
 
-board_x = 10
-board_y = 10
+board_x = 5
+board_y = 5
+board_area = board_x * board_y
 cities = 3
 towns = 3
 forests = 10
 rocks = 5
 castles = 3
+total_elements = cities + towns + forests + rocks + castles + 1
 
-terrain = initialize_terrain(10, 10)
-board = generate_board(terrain, cities, towns, forests, rocks, castles)
-print_map(board)
+if total_elements < board_area:
+    terrain = initialize_terrain(board_x, board_y)
+    board = generate_board(terrain, cities, towns, forests, rocks, castles)
+    print_map(board)
+else:
+    print("Map is too small for the number of elements")
+
