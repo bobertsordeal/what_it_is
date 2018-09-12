@@ -53,8 +53,8 @@ def print_map(game_map):
     print(build_map)
 
 
-board_x = 5
-board_y = 5
+board_x = 10
+board_y = 10
 board_area = board_x * board_y
 cities = 3
 towns = 3
